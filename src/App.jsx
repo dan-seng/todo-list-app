@@ -12,6 +12,7 @@ import ThisMonth from "./pages/ThisMonth";
 import Upcoming from "./pages/Upcoming";
 import StickyWall from "./pages/StickyWall";
 import Settings from "./pages/Settings";
+import CalendarView from "./pages/CalendarView"
 
 function App() {
   return (
@@ -26,10 +27,12 @@ function App() {
 
         {/* Main app after login */}
         <Route path="/home" element={<Home />}>
+          <Route index element={<Upcoming />} />
+          <Route path="upcoming" element={<Upcoming />} />
           <Route path="today" element={<Today />} />
           <Route path="week" element={<ThisWeek />} />
           <Route path="month" element={<ThisMonth />} />
-          <Route path="upcoming" element={<Upcoming />} />
+          <Route path="calendarview" element={<CalendarView/>} />
           <Route path="sticky" element={<StickyWall />} />
           <Route path="settings" element={<Settings />} />
         </Route>

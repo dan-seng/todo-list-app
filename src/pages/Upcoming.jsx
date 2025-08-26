@@ -1,3 +1,3 @@
 export default function Upcoming(){
-  return <div>Coming View</div>
+  return (<h1>Coming View</h1>)
 }
