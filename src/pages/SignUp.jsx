@@ -1,6 +1,6 @@
-
+import { Link } from 'react-router-dom'
 import React, { useState } from "react";
-import { FaGoogle, FaFacebook } from "react-icons/fa"; 
+import { FaGoogle, FaFacebook, FaArrowLeft} from "react-icons/fa"; 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignUp.css"
 import logo from "../assets/images/dan-softwares.png"
@@ -53,7 +53,17 @@ export default function SignUp() {
 
 
   return (
-    <div className="signup-container">
+    
+   <div>
+        <button
+          className="back-btn"
+          onClick={() => navigate("/")}
+          aria-label="Go back"
+          >
+          <FaArrowLeft />
+       </button>
+
+     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSubmit}>
         <h1>Create Account</h1>
 
@@ -107,7 +117,6 @@ export default function SignUp() {
         <button type="submit" className="signup-btn">
         Sign Up
         </button>
-
         <div className="social-signup">
           <p>Or sign up with</p>
           <div className="icons">
@@ -118,7 +127,9 @@ export default function SignUp() {
               <FaFacebook size={35} />
             </button>
           </div>
-
+         <p className="auth-footer">
+          Already have an account? <a href="/signin">Sign in</a>
+         </p>
            <div className="logo-sexn">
               <img src={logo} alt="Dan-Softwares logo" className="logo-img" />
        </div>
@@ -126,5 +137,6 @@ export default function SignUp() {
         
       </form>
     </div>
+   </div>
   );
 }

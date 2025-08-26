@@ -112,3 +112,21 @@
   border-radius: 5px;
   margin-top: 5px;
 }
+
+.auth-footer {
+  margin-top: 16px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.auth-footer a {
+  color: #f7d900;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.auth-footer a:hover {
+  color: #222;
+  text-decoration: none;
+}
