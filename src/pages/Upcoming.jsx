@@ -4,8 +4,14 @@ import { FaPlus } from "react-icons/fa";
 
 import "./Upcoming.css";
 
+// Load tasks from localStorage or use default tasksData
+const loadTasks = () => {
+  const savedTasks = localStorage.getItem('tasks');
+  return savedTasks ? JSON.parse(savedTasks) : tasksData;
+};
+
 export default function Upcoming() {
-  const [tasks, setTasks] = useState(tasksData);
+  const [tasks, setTasks] = useState(loadTasks());
   const [activeForm, setActiveForm] = useState(null);
   const [newTask, setNewTask] = useState({ title: "", date: "" });
 
@@ -23,9 +29,12 @@ export default function Upcoming() {
 
   // Handle task completion toggle
   const toggleTaskCompletion = (taskId) => {
-    setTasks(tasks.map(task => 
+    const updatedTasks = tasks.map(task => 
       task.id === taskId ? { ...task, completed: !task.completed } : task
-    ));
+    );
+    setTasks(updatedTasks);
+    // Save to localStorage
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   // Handle new task input
@@ -63,7 +72,10 @@ export default function Upcoming() {
       completed: false
     };
     
-    setTasks([...tasks, newTaskObj]);
+    const updatedTasks = [...tasks, newTaskObj];
+    setTasks(updatedTasks);
+    // Save to localStorage
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     setNewTask({ title: "", date: "" });
     setActiveForm(null);
   };
