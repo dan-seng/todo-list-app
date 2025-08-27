@@ -1,5 +1,7 @@
 import { useState } from "react";
 import tasksData from "../data/Tasks";
+import { FaPlus } from "react-icons/fa";
+
 import "./Upcoming.css";
 
 export default function Upcoming() {
@@ -97,21 +99,27 @@ export default function Upcoming() {
     return taskDate > tomorrow && taskDate <= weekEnd;
   });
 
+  // Calculate total tasks
+  const totalTasks = tasks.length;
+
   return (
     <div className="upcoming-container">
-      <h1>Upcoming Tasks</h1>
+      <div className="header-container">
+        <h1>Upcoming Tasks</h1>
+        <span className="task-count">{totalTasks} {totalTasks === 1 ? 'task' : 'tasks'}</span>
+      </div>
       <div className="tasks-time">
         <div className="today">
           <div className="section-header">
             <h2>Today</h2>
-            <button 
+           
+          </div>
+          <button 
               className="add-to-section"
               onClick={() => toggleTaskForm('today')}
             >
-              + Add Task
+              <FaPlus size={15} /> Add New Task
             </button>
-          </div>
-          
           {activeForm === 'today' && (
             <form onSubmit={(e) => addTask(todayStr, e)} className="section-task-form">
               <input
@@ -161,14 +169,14 @@ export default function Upcoming() {
           <div className="tomorrow">
             <div className="section-header">
               <h2>Tomorrow</h2>
-              <button 
+             
+            </div>
+            <button 
                 className="add-to-section"
                 onClick={() => toggleTaskForm('tomorrow')}
               >
-                + Add Task
+               <FaPlus size={15} /> Add New Task
               </button>
-            </div>
-            
             {activeForm === 'tomorrow' && (
               <form onSubmit={(e) => addTask(tomorrowStr, e)} className="section-task-form">
                 <input
@@ -216,14 +224,13 @@ export default function Upcoming() {
           <div className="this-week">
             <div className="section-header">
               <h2>This Week</h2>
-              <button 
+            </div>
+            <button 
                 className="add-to-section"
                 onClick={() => toggleTaskForm('week')}
               >
-                + Add Task
+               <FaPlus size={15} /> Add New Task
               </button>
-            </div>
-            
             {activeForm === 'week' && (
               <form onSubmit={(e) => {
                 const selectedDate = new Date(e.target.date.value);

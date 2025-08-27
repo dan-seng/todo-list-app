@@ -1,7 +1,25 @@
 .upcoming-container {
+  padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.task-count {
+  font-size: 1rem;
+  color: #666;
+  background: #f0f0f0;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
 }
 
 /* Section Task Form */
@@ -105,17 +123,17 @@
 
 .add-to-section {
   background: transparent;
-  border: 1px solid #ddd;
+ border: none;
   border-radius: 4px;
   padding: 8px 16px;
-  font-size: 15px;
-  color: #000;
+  font-size: 16px;
+  color: #4d4c4c;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .add-to-section:hover {
@@ -148,9 +166,9 @@
 }
 
 .today {
-  width: 100%;
+  width: 80%;
   display: block;
-  background-color: #f8f9fa;
+  background-color: #fffffff6;
   padding: 15px;
   border-radius: 10px;    
   border: 1px solid #ddd;
@@ -185,7 +203,7 @@
 .tomorrow {
   width: 48%;
   display: block;
-  background-color: #f8f9fa;
+  background-color: #fffffff6;
   padding: 15px;
   border-radius: 10px;    
   border: 1px solid #ddd;
@@ -193,7 +211,7 @@
 .this-week {
   width: 48%;
   display: block;
-  background-color: #f8f9fa;
+  background-color: #ffffffcf;
   padding: 15px;
   border-radius: 10px;    
   border: 1px solid #ddd;
