@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaSignOutAlt, FaCog, FaRegCalendarAlt, FaRegStickyNote,   FaSun,  FaCalendarWeek} from "react-icons/fa";
+
+
+
 import "./Sidebar.css";
 
 export default function Sidebar() {
@@ -72,18 +75,18 @@ export default function Sidebar() {
         <nav onClick={handleNavClick}>
           <p className="tasks-links">Tasks</p>
           <ul>
-            <li><NavLink to="upcoming" className={({ isActive }) => isActive ? 'active' : ''}>Upcoming</NavLink></li>
-            <li><NavLink to="today" className={({ isActive }) => isActive ? 'active' : ''}>Today</NavLink></li>
-            <li><NavLink to="sticky" className={({ isActive }) => isActive ? 'active' : ''}>Sticky Wall</NavLink></li>
-            <li><NavLink to="calendarview" className={({ isActive }) => isActive ? 'active' : ''}>Calendar</NavLink></li>
-            <li><NavLink to="week" className={({ isActive }) => isActive ? 'active' : ''}>This Week</NavLink></li>
+            <li><NavLink to="upcoming" className={({ isActive }) => isActive ? 'active' : ''}> &gt;&gt; Upcoming</NavLink></li>
+            <li><NavLink to="today" className={({ isActive }) => isActive ? 'active' : ''}><FaSun size={17} />Today</NavLink></li>
+            <li><NavLink to="sticky" className={({ isActive }) => isActive ? 'active' : ''}><FaRegStickyNote size={17} />Sticky Wall</NavLink></li>
+            <li><NavLink to="calendarview" className={({ isActive }) => isActive ? 'active' : ''}><FaRegCalendarAlt size={17} />Calendar</NavLink></li>
+            <li><NavLink to="week" className={({ isActive }) => isActive ? 'active' : ''}><FaCalendarWeek size={17} />This Week</NavLink></li>
             <li><NavLink to="month" className={({ isActive }) => isActive ? 'active' : ''}>This Month</NavLink></li>
           </ul>
           <p className="tasks-links">Settings</p>
           <ul>
-            <li><NavLink to="settings" className={({ isActive }) => isActive ? 'active' : ''}>Settings</NavLink></li>
+            <li><NavLink to="settings" className={({ isActive }) => isActive ? 'active' : ''}><FaCog size={17} />Settings</NavLink></li>
           </ul>
-          <Link to="/signin">Log Out</Link>
+          <Link to="/signin"><FaSignOutAlt size={17} />SIgn out</Link>
         </nav>
       </div>
     </>

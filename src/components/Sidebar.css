@@ -203,13 +203,6 @@ nav a.active::before {
 }
 
 
-nav li:nth-child(1) a::after { content: '📅'; margin-left: auto; }
-nav li:nth-child(2) a::after { content: '📌'; margin-left: auto; }
-nav li:nth-child(3) a::after { content: '📝'; margin-left: auto; }
-nav li:nth-child(4) a::after { content: '📆'; margin-left: auto; }
-nav li:nth-child(5) a::after { content: '🗓️'; margin-left: auto; }
-nav li:nth-child(6) a::after { content: '⚙️'; margin-left: auto; }
-
 
 @media (max-width: 768px) {
   .sidebar {
