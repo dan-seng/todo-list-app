@@ -81,6 +81,19 @@
     border-bottom: 1px solid #f5f5f5;
   }
   
+  .task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .task-date {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 2px;
+  }
+  
   .this-week-task-checkbox {
     margin-right: 10px;
     width: 16px;
@@ -93,8 +106,37 @@
     color: #888;
   }
   
-  /* Form Styles */
-  .this-week-form {
+  /* Add Task Button */
+.this-week-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px 0 20px;
+  background-color: #f8f8f8;
+  color: #555;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.this-week-add-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+  color: #333;
+}
+
+.this-week-add-btn:active {
+  transform: translateY(1px);
+}
+
+/* Form Styles */
+.this-week-form {
     margin: 15px 0;
     padding: 10px;
     background-color: #fff;
@@ -105,10 +147,28 @@
   .this-week-input {
     width: 100%;
     margin-bottom: 8px;
-    padding: 8px 10px;
+    padding: 10px 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fff;
+  }
+  
+  .this-week-input[type="date"] {
+    padding: 9px 12px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .this-week-input[type="date"]:hover {
+    border-color: #999;
+  }
+  
+  .this-week-input[type="date"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
   }
   
   .this-week-form-actions {

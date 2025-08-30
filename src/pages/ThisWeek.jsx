@@ -27,6 +27,10 @@ export default function ThisWeek() {
   const endOfWeek = new Date(startOfWeek);
   endOfWeek.setDate(startOfWeek.getDate() + 6); // Sunday
 
+  // Calculate one year from today
+  const oneYearFromNow = new Date(today);
+  oneYearFromNow.setFullYear(today.getFullYear() + 1);
+
   // Save tasks to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -125,7 +129,7 @@ export default function ThisWeek() {
           value={newTask.date}
           onChange={handleInputChange}
           min={todayStr}
-          max={formatDate(endOfWeek)}
+          max={formatDate(oneYearFromNow)}
           className="this-week-input"
         />
         <div className="this-week-form-actions">
@@ -157,24 +161,37 @@ export default function ThisWeek() {
               </div>
               
               <div className="this-week-task-list">
-                 {dayTasks.length > 0 ? (
-                  dayTasks.map(task => (
-               <div key={task.id} className="this-week-task-item">
-                <input
-                  type="checkbox"
-                  checked={task.completed || false}
-                  onChange={() => toggleTaskCompletion(task.id)}
-                  className="this-week-task-checkbox"
-                />
-                <span className={task.completed ? "this-week-task-completed" : ""}>
-                  {task.title}
-                </span>
-             </div>
-    ))
-  ) : (
-    <p className="this-week-no-tasks">No tasks</p>
-  )}
-</div>
+                {dayTasks.length > 0 ? (
+                  dayTasks.map(task => {
+                    const taskDate = new Date(task.date);
+                    const formattedDate = taskDate.toLocaleDateString('en-US', { 
+                      month: 'short', 
+                      day: 'numeric' 
+                    });
+                    
+                    return (
+                      <div key={task.id} className="this-week-task-item">
+                        <input
+                          type="checkbox"
+                          checked={task.completed || false}
+                          onChange={() => toggleTaskCompletion(task.id)}
+                          className="this-week-task-checkbox"
+                        />
+                        <div className="task-content">
+                          <span className={task.completed ? "this-week-task-completed" : ""}>
+                            {task.title}
+                          </span>
+                          <span className="task-date">
+                            {formattedDate}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="this-week-no-tasks">No tasks</p>
+                )}
+              </div>
             </div>
           );
         })}
