@@ -13,6 +13,105 @@
   border-bottom: 1px solid #eee;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Dark Mode Styles */
+.dark .upcoming-container {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.dark .header-container {
+  border-bottom-color: #333;
+}
+
+.dark h1,
+.dark h2,
+.dark h3 {
+  color: #f0f0f0;
+}
+
+.dark .task-count {
+  background: #333;
+  color: #bbb;
+}
+
+.dark .today,
+.dark .tomorrow,
+.dark .this-week,
+.dark .others {
+  background-color: #2d2d2d;
+  border-color: #3a3a3a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark .task-item {
+  border-bottom-color: #333;
+}
+
+.dark .completed {
+  color: #888;
+}
+
+.dark .theme-toggle {
+  color: #bbb;
+}
+
+.dark .theme-toggle:hover {
+  background: #333;
+  color: #fff;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
 .task-count {
   font-size: 1rem;
   color: #666;
@@ -178,9 +277,21 @@
 }
 .task-item {
   display: flex;
-  align-items: center;
-  padding: 8px 0;
+  align-items: flex-start;
+  padding: 10px 0;
   border-bottom: 1px solid #eee;
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.task-date {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2px;
 }
 
 .task-checkbox {
@@ -193,6 +304,48 @@
 .completed {
   text-decoration: line-through;
   color: #888;
+}
+
+/* Others Section */
+.others {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-top: 20px;
+  border: 1px solid #eee;
+}
+
+.others .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.others h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.others .task-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.others .task-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.others .task-date {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2px;
 }
 
 /* This Week View */

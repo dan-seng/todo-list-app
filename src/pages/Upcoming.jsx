@@ -1,31 +1,55 @@
-import { useState } from "react";
-import tasksData from "../data/Tasks";
-import { FaPlus } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { FaPlus, FaSun, FaMoon } from "react-icons/fa";
 
 import "./Upcoming.css";
 
-// Load tasks from localStorage or use default tasksData
 const loadTasks = () => {
   const savedTasks = localStorage.getItem('tasks');
-  return savedTasks ? JSON.parse(savedTasks) : tasksData;
+  return savedTasks ? JSON.parse(savedTasks) : [];
 };
 
 export default function Upcoming() {
-  const [tasks, setTasks] = useState(loadTasks());
+  const [tasks, setTasks] = useState([]);
   const [activeForm, setActiveForm] = useState(null);
   const [newTask, setNewTask] = useState({ title: "", date: "" });
+  const [darkMode, setDarkMode] = useState(false);
+  
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    document.documentElement.classList.toggle('dark', newDarkMode);
+    localStorage.setItem('darkMode', newDarkMode);
+  };
+  
+  // Check for saved dark mode preference
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedDarkMode);
+    if (savedDarkMode) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+  
+  useEffect(() => {
+    setTasks(loadTasks());
+  }, []);
+  const normalizeDate = (date) => {
+    const d = new Date(date);
+    return d.toISOString().split('T')[0];
+  };
 
   const today = new Date();
-  const todayStr = today.toISOString().split("T")[0]; // YYYY-MM-DD
+  const todayStr = normalizeDate(today);
 
-  // Tomorrow
-  const tomorrow = new Date();
+  const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
-  const tomorrowStr = tomorrow.toISOString().split("T")[0];
-
-  // End of this week (Sunday)
-  const weekEnd = new Date(today);
-  weekEnd.setDate(today.getDate() + (7 - today.getDay()));
+  const tomorrowStr = normalizeDate(tomorrow);
+  const maxDate = new Date(today);
+  maxDate.setFullYear(today.getFullYear() + 1);
+  const maxDateStr = normalizeDate(maxDate);
+  
+  // For the week view, we want to show tasks from today until 7 days from now
+  const todayDate = new Date(today);
 
   // Handle task completion toggle
   const toggleTaskCompletion = (taskId) => {
@@ -108,8 +132,27 @@ export default function Upcoming() {
   const tomorrowTasks = tasks.filter(task => task.date === tomorrowStr);
   const weekTasks = tasks.filter(task => {
     const taskDate = new Date(task.date);
-    return taskDate > tomorrow && taskDate <= weekEnd;
+    const taskDateStr = task.date;
+    
+    // Skip if it's today or tomorrow (they have their own sections)
+    if (taskDateStr === todayStr || taskDateStr === tomorrowStr) {
+      return false;
+    }
+    
+    // Include tasks from today+2 to today+7
+    const weekLater = new Date(today);
+    weekLater.setDate(today.getDate() + 7);
+    return taskDate > new Date(tomorrow) && taskDate <= weekLater;
   });
+  
+  // Tasks more than a week away
+  const otherTasks = tasks.filter(task => {
+    const taskDate = new Date(task.date);
+    const weekLater = new Date(today);
+    weekLater.setDate(today.getDate() + 7);
+    return taskDate > weekLater && taskDate <= maxDate;
+  });
+  
 
   // Calculate total tasks
   const totalTasks = tasks.length;
@@ -117,8 +160,17 @@ export default function Upcoming() {
   return (
     <div className="upcoming-container">
       <div className="header-container">
-        <h1>Upcoming Tasks</h1>
-        <span className="task-count">{totalTasks} {totalTasks === 1 ? 'task' : 'tasks'}</span>
+        <div className="header-left">
+          <h1>Upcoming Tasks</h1>
+          <span className="task-count">{totalTasks} {totalTasks === 1 ? 'task' : 'tasks'}</span>
+        </div>
+        <button 
+          onClick={toggleDarkMode} 
+          className="theme-toggle"
+          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
       </div>
       <div className="tasks-time">
         <div className="today">
@@ -269,9 +321,9 @@ export default function Upcoming() {
                     type="date"
                     id="task-date"
                     name="date"
-                    min={tomorrowStr}
-                    max={formatDateForInput(weekEnd)}
-                    defaultValue={formatDateForInput(getNextWeekday(tomorrow))}
+                    min={todayStr}
+                    max={maxDateStr}
+                    defaultValue={todayStr}
                     className="date-input"
                   />
                 </div>
@@ -291,9 +343,14 @@ export default function Upcoming() {
                       onChange={() => toggleTaskCompletion(task.id)}
                       className="task-checkbox"
                     />
-                    <span className={task.completed ? "completed" : ""}>
-                      {task.title}
-                    </span>
+                    <div className="task-content">
+                      <span className={task.completed ? "completed" : ""}>
+                        {task.title}
+                      </span>
+                      <span className="task-date">
+                        {new Date(task.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      </span>
+                    </div>
                   </div>
                 ))
               ) : (
@@ -301,7 +358,90 @@ export default function Upcoming() {
               )}
             </div>
           </div>
+          
+          {/* Others Section */}
+         
         </div>
+        <div className="others">
+            <div className="section-header">
+              <h2>Others</h2>
+              <button 
+                className="add-to-section"
+                onClick={() => toggleTaskForm('others')}
+              >
+                <FaPlus size={15} /> Add New Task
+              </button>
+            </div>
+            
+            {activeForm === 'others' && (
+              <form onSubmit={(e) => {
+                const selectedDate = new Date(e.target.date.value);
+                const nextWeek = new Date(today);
+                nextWeek.setDate(today.getDate() + 8); // First day of 'Others' section
+                const defaultDate = selectedDate && !isNaN(selectedDate.getTime()) ? 
+                  formatDateForInput(selectedDate) : 
+                  formatDateForInput(nextWeek);
+                
+                addTask(defaultDate, e);
+              }} className="section-task-form">
+                <input
+                  type="text"
+                  name="title"
+                  value={newTask.title}
+                  onChange={handleInputChange}
+                  placeholder="Enter task title"
+                  className="task-input"
+                  required
+                  autoFocus
+                />
+                <div className="date-picker">
+                  <label htmlFor="task-date-others">Due Date: </label>
+                  <input
+                    type="date"
+                    id="task-date-others"
+                    name="date"
+                    min={formatDateForInput(new Date(today.getTime() + 8 * 24 * 60 * 60 * 1000))} // 8 days from now
+                    max={maxDateStr}
+                    defaultValue={formatDateForInput(new Date(today.getTime() + 8 * 24 * 60 * 60 * 1000))}
+                    className="date-input"
+                  />
+                </div>
+                <div className="form-actions">
+                  <button type="submit" className="save-btn">Add</button>
+                  <button type="button" onClick={() => setActiveForm(null)} className="cancel-btn">Cancel</button>
+                </div>
+              </form>
+            )}
+            
+            <div className="task-list">
+              {otherTasks.length > 0 ? (
+                otherTasks.map(task => (
+                  <div key={task.id} className="task-item">
+                    <input
+                      type="checkbox"
+                      checked={task.completed || false}
+                      onChange={() => toggleTaskCompletion(task.id)}
+                      className="task-checkbox"
+                    />
+                    <div className="task-content">
+                      <span className={task.completed ? "completed" : ""}>
+                        {task.title}
+                      </span>
+                      <span className="task-date">
+                        {new Date(task.date).toLocaleDateString('en-US', { 
+                          year: 'numeric',
+                          month: 'short', 
+                          day: 'numeric' 
+                        })}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p>No tasks scheduled beyond next week</p>
+              )}
+            </div>
+          </div>
       </div>
     </div>
   );
