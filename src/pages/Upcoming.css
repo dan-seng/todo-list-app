@@ -42,7 +42,7 @@
 
 /* Dark Mode Styles */
 .dark .upcoming-container {
-  background-color: #1a1a1a;
+  background-color:  #1f2632;
   color: #e0e0e0;
 }
 
@@ -57,25 +57,25 @@
 }
 
 .dark .task-count {
-  background: #333;
-  color: #bbb;
+  background: #f8d36e;
+  color: #3b3b3b;
 }
 
 .dark .today,
 .dark .tomorrow,
 .dark .this-week,
 .dark .others {
-  background-color: #2d2d2d;
-  border-color: #3a3a3a;
+  background-color: #1f2632;
+  border-color: #5a626f;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .dark .task-item {
-  border-bottom-color: #333;
+  border-bottom-color: #5a626f;
 }
 
 .dark .completed {
-  color: #888;
+  color: #5a626f;
 }
 
 .dark .theme-toggle {
@@ -130,7 +130,7 @@
 }
 
 .section-task-form .task-input {
-  width: 100%;
+  width: 80%;
   margin-bottom: 8px;
   padding: 8px 10px;
   border: 1px solid #ddd;
@@ -144,7 +144,7 @@
   justify-content: flex-end;
 }
 
-.save-btn, .cancel-btn {
+.save-btn {
   padding: 8px 16px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -165,8 +165,18 @@
 }
 
 .cancel-btn {
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  color: #000;
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   border-color: #ddd;
   color: #666;
+  height: 40px;
 }
 
 .cancel-btn:hover {
@@ -212,31 +222,37 @@
 .section-header h2 {
   margin: 0;
   font-size: 1.2rem;
-  color: #333;
+  color: var(--upcoming-text, rgba(192, 192, 6, 0.783));
+  padding: 12px 0;
 }
 
 .add-to-section {
   background: transparent;
- border: none;
-  border-radius: 4px;
+  border: 1px dashed var(--upcoming-border, #ddd);
+  border-radius: 6px;
   padding: 8px 16px;
-  font-size: 16px;
-  color: #4d4c4c;
+  font-size: 14px;
+  color: var(--upcoming-text-secondary, #666);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  font-weight: 600;
+  font-weight: 500;
+  width: 100%;
+  margin: 10px 0 20px;
 }
 
 .add-to-section:hover {
-  background: #f5f5f5;
-  border-color: #bbb;
+  background: var(--upcoming-hover, #f5f5f5);
+  color: var(--upcoming-text, #333);
+  border-color: var(--upcoming-text-secondary, #999);
 }
 
 .add-to-section:active {
   transform: translateY(1px);
+  opacity: 0.9;
 }
 
 /* Task item styles */
@@ -323,11 +339,7 @@
   margin-bottom: 15px;
 }
 
-.others h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #333;
-}
+
 
 .others .task-item {
   display: flex;

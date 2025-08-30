@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { FaBars, FaSignOutAlt, FaCog, FaRegCalendarAlt, FaRegStickyNote,   FaSun,  FaCalendarWeek} from "react-icons/fa";
+import { FaBars, FaSignOutAlt, FaCog, FaRegCalendarAlt, FaRegStickyNote, FaSun, FaMoon, FaCalendarWeek } from "react-icons/fa";
+import { useDarkMode } from "../context/DarkModeContext";
 
 
 
@@ -37,6 +38,8 @@ export default function Sidebar() {
       setOpen(false);
     }
   };
+
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <>
@@ -80,13 +83,22 @@ export default function Sidebar() {
             <li><NavLink to="sticky" className={({ isActive }) => isActive ? 'active' : ''}><FaRegStickyNote size={17} />Sticky Wall</NavLink></li>
             <li><NavLink to="calendarview" className={({ isActive }) => isActive ? 'active' : ''}><FaRegCalendarAlt size={17} />Calendar</NavLink></li>
             <li><NavLink to="week" className={({ isActive }) => isActive ? 'active' : ''}><FaCalendarWeek size={17} />This Week</NavLink></li>
-            <li><NavLink to="month" className={({ isActive }) => isActive ? 'active' : ''}>This Month</NavLink></li>
-          </ul>
+            </ul>
           <p className="tasks-links">Settings</p>
           <ul>
+            <li>
+              <button 
+                onClick={toggleDarkMode} 
+                className="dark-mode-toggle"
+                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDarkMode ? <FaSun size={17} /> : <FaMoon size={17} />}
+                <span>{isDarkMode ? 'Light' : 'Dark'}</span>
+              </button>
+            </li>
             <li><NavLink to="settings" className={({ isActive }) => isActive ? 'active' : ''}><FaCog size={17} />Settings</NavLink></li>
           </ul>
-          <Link to="/signin"><FaSignOutAlt size={17} />SIgn out</Link>
+          <Link to="/signin" className="sign-out"><FaSignOutAlt size={17} />Sign out</Link>
         </nav>
       </div>
     </>

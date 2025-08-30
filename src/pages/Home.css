@@ -1,9 +1,25 @@
+:root {
+  --primary-bg: #ffffff;
+  --sidebar-bg: #f3f2f2b8;
+  --sidebar-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --text-color: #000000;
+}
+
+.dark {
+  --primary-bg: #1a202c;
+  --sidebar-bg: #2d3748;
+  --sidebar-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  --text-color: #ffffff;
+}
+
 .home-container {
   display: flex;
   min-height: 100vh;
-  background:white;
+  background: var(--primary-bg);
   position: relative;
-  transition: padding-left 0.3s cubic-bezier(.4,0,.2,1);
+  transition: padding-left 0.3s var(--transition-timing);
+  color: var(--text-color);
 }
 
 .sidebar {
@@ -13,13 +29,13 @@
   height: 100vh;
   width: 240px;
   min-width: 220px;
-  background: #f3f2f2b8;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+  background: var(--sidebar-bg);
+  box-shadow: var(--sidebar-shadow);
   display: flex;
   flex-direction: column;
   gap: 18px;
   z-index: 100;
-  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  transition: all 0.3s var(--transition-timing);
   transform: translateX(0);
 }
 
@@ -33,11 +49,11 @@
 
 .main-content {
   flex: 1;
-  background: white;
+  background: var(--primary-bg);
   padding: 20px;
   overflow-y: auto;
   margin-left: 300px; /* 240px (sidebar) + 60px (gap) */
-  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  transition: all 0.3s var(--transition-timing);
 }
 
 /* When sidebar is closed, adjust main content */
@@ -51,12 +67,9 @@
   .sidebar.closed + .main-content {
     margin-left: 0;
     width: 100%;
-    padding-left: 20px;
+    padding: 20px;
   }
-}
-
-/* Adjust for mobile view */
-@media (max-width: 768px) {
+  
   .main-content {
     margin-left: 0;
     padding: 20px;

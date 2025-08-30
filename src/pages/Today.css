@@ -1,0 +1,262 @@
+:root {
+    --today-bg: #ffffff;
+    --today-text: #333333;
+    --today-text-secondary: #666666;
+    --today-border: #eeeeee;
+    --today-hover: #f5f5f5;
+    --today-card-bg: #ffffff;
+    --today-card-border: #eeeeee;
+    --today-card-shadow: rgba(0, 0, 0, 0.05);
+    --today-count-bg: #f0f0f0;
+    --today-count-text: #666666;
+    --today-add-btn-bg: #f8f8f8;
+    --today-add-btn-border: #cccccc;
+    --today-add-btn-text: #555555;
+    --today-add-btn-hover: #f0f0f0;
+    --today-input-bg: #ffffff;
+    --today-input-border: #dddddd;
+    --today-input-focus: #4CAF50;
+    --today-btn-bg: #4CAF50;
+    --today-btn-text: #ffffff;
+    --today-btn-cancel-bg: transparent;
+    --today-btn-cancel-text: #666666;
+    --today-btn-cancel-hover: #f5f5f5;
+    --today-checkbox: #4CAF50;
+    --today-completed: #888888;
+  }
+  
+  .dark {
+    --today-bg: #1a202c;
+    --today-text: #f7fafc;
+    --today-text-secondary: #a0aec0;
+    --today-border: #2d3748;
+    --today-hover: #2d3748;
+    --today-card-bg: #2d3748;
+    --today-card-border: #4a5568;
+    --today-card-shadow: rgba(0, 0, 0, 0.2);
+    --today-count-bg: #2d3748;
+    --today-count-text: #a0aec0;
+    --today-add-btn-bg: #2d3748;
+    --today-add-btn-border: #4a5568;
+    --today-add-btn-text: #a0aec0;
+    --today-add-btn-hover: #4a5568;
+    --today-input-bg: #2d3748;
+    --today-input-border: #4a5568;
+    --today-input-focus: #48bb78;
+    --today-btn-bg: #48bb78;
+    --today-btn-text: #ffffff;
+    --today-btn-cancel-bg: transparent;
+    --today-btn-cancel-text: #a0aec0;
+    --today-btn-cancel-hover: #2d3748;
+    --today-checkbox: #48bb78;
+    --today-completed: #a0aec0;
+  }
+  
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Today Container */
+  .today {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--today-bg);
+    min-height: 100vh;
+  }
+  
+  /* Header Styles */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--today-border);
+  }
+  
+  .section-header h2 {
+    color: var(--today-text);
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .task-count {
+    font-size: 0.9rem;
+    color: var(--today-count-text);
+    background: var(--today-count-bg);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  
+  /* Add Task Button */
+  .add-to-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0 20px;
+    background-color: var(--today-add-btn-bg);
+    color: var(--today-add-btn-text);
+    border: 1px dashed var(--today-add-btn-border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .add-to-section:hover {
+    background-color: var(--today-add-btn-hover);
+    border-color: var(--today-text-secondary);
+    color: var(--today-text);
+  }
+  
+  /* Task Form */
+  .section-task-form {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: var(--today-card-bg);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px var(--today-card-shadow);
+    border: 1px solid var(--today-card-border);
+  }
+  
+  .task-input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--today-input-border);
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background-color: var(--today-input-bg);
+    color: var(--today-text);
+  }
+  
+  .task-input::placeholder {
+    color: var(--today-text-muted);
+  }
+  
+  .task-input:focus {
+    outline: none;
+    border-color: var(--today-input-focus);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 15px;
+  }
+  
+  .save-btn, .cancel-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .save-btn {
+    background-color: var(--today-btn-bg);
+    color: var(--today-btn-text);
+  }
+  
+  .cancel-btn {
+    background: var(--today-btn-cancel-bg);
+    color: var(--today-btn-cancel-text);
+    border: 1px solid var(--today-border);
+  }
+  
+  .save-btn:hover, .cancel-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  .cancel-btn:hover {
+    background: var(--today-btn-cancel-hover);
+  }
+  
+  /* Task List */
+  .task-list {
+    margin-top: 20px;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--today-border);
+    transition: all 0.2s ease;
+  }
+  
+  .task-item:hover {
+    background-color: var(--today-hover);
+    border-radius: 4px;
+    padding: 12px 8px;
+    margin: 0 -8px;
+  }
+  
+  .task-checkbox {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--today-checkbox);
+  }
+  
+  .task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .task-title {
+    color: var(--today-text);
+    font-size: 0.95rem;
+  }
+  
+  .task-date {
+    font-size: 0.75rem;
+    color: var(--today-text-muted);
+  }
+  
+  .task-completed {
+    text-decoration: line-through;
+    color: var(--today-completed);
+  }
+  
+  /* Animation for task items */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .task-item {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .today {
+      padding: 15px;
+    }
+    
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .task-count {
+      align-self: flex-start;
+    }
+  }

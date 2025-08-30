@@ -1,112 +1,197 @@
+:root {
+  --week-bg: #ffffff;
+  --week-container-bg: #ffffff;
+  --week-text: #333333;
+  --week-text-secondary: #666666;
+  --week-text-muted: #888888;
+  --week-border: #eeeeee;
+  --week-hover: #f5f5f5;
+  --week-card-bg: #ffffff;
+  --week-card-border: #eeeeee;
+  --week-card-shadow: rgba(0, 0, 0, 0.05);
+  --week-today-bg: #f9fff9;
+  --week-today-border: #4CAF50;
+  --week-count-bg: #f0f0f0;
+  --week-count-text: #666666;
+  --week-add-btn-bg: #f8f8f8;
+  --week-add-btn-border: #cccccc;
+  --week-add-btn-text: #555555;
+  --week-add-btn-hover: #f0f0f0;
+  --week-input-bg: #ffffff;
+  --week-input-border: #dddddd;
+  --week-input-focus: #4CAF50;
+  --week-btn-bg: #4CAF50;
+  --week-btn-text: #ffffff;
+  --week-btn-cancel-bg: transparent;
+  --week-btn-cancel-text: #666666;
+  --week-btn-cancel-hover: #f5f5f5;
+  --week-checkbox: #4CAF50;
+  --week-completed: #888888;
+}
+
+.dark {
+  --week-bg: #1a202c;
+  --week-container-bg: #1a202c;
+  --week-text: #f7fafc;
+  --week-text-secondary: #a0aec0;
+  --week-text-muted: #718096;
+  --week-border: #2d3748;
+  --week-hover: #2d3748;
+  --week-card-bg: #2d3748;
+  --week-card-border: #4a5568;
+  --week-card-shadow: rgba(0, 0, 0, 0.2);
+  --week-today-bg: #1e3a2c;
+  --week-today-border: #48bb78;
+  --week-count-bg: #2d3748;
+  --week-count-text: #a0aec0;
+  --week-add-btn-bg: #2d3748;
+  --week-add-btn-border: #4a5568;
+  --week-add-btn-text: #a0aec0;
+  --week-add-btn-hover: #4a5568;
+  --week-input-bg: #2d3748;
+  --week-input-border: #4a5568;
+  --week-input-focus: #48bb78;
+  --week-btn-bg: #48bb78;
+  --week-btn-text: #ffffff;
+  --week-btn-cancel-bg: transparent;
+  --week-btn-cancel-text: #a0aec0;
+  --week-btn-cancel-hover: #2d3748;
+  --week-checkbox: #48bb78;
+  --week-completed: #a0aec0;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* This Week Container */
 .this-week-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Header Styles */
-  .this-week-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .this-week-count {
-    font-size: 1rem;
-    color: #666;
-    background: #f0f0f0;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-weight: 500;
-  }
-  
-  /* Grid Layout */
-  .this-week-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  /* Day Card Styles */
-  .this-week-day {
-    background: #fff;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-  }
-  
-  .this-week-today {
-    border-left: 4px solid #4CAF50;
-    background-color: #f9fff9;
-  }
-  
-  .this-week-day-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .this-week-day-title {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #333;
-  }
-  
-  .this-week-date {
-    font-size: 0.9rem;
-    color: #666;
-    background: #f5f5f5;
-    padding: 2px 8px;
-    border-radius: 12px;
-  }
-  
-  /* Task List Styles */
-  .this-week-task-list {
-    min-height: 100px;
-  }
-  
-  .this-week-task-item {
-    display: flex;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  
-  .task-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  
-  .task-date {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: 2px;
-  }
-  
-  .this-week-task-checkbox {
-    margin-right: 10px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-  }
-  
-  .this-week-task-completed {
-    text-decoration: line-through;
-    color: #888;
-  }
-  
-  /* Add Task Button */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--week-bg);
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.this-week-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--week-border);
+}
+
+.this-week-count {
+  font-size: 1rem;
+  color: var(--week-count-text);
+  background: var(--week-count-bg);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Grid Layout */
+.this-week-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Day Card Styles */
+.this-week-day {
+  background: var(--week-card-bg);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px var(--week-card-shadow);
+  border: 1px solid var(--week-card-border);
+  transition: all 0.3s ease;
+}
+
+.this-week-today {
+  border-left: 4px solid var(--week-today-border);
+  background-color: var(--week-today-bg);
+}
+
+.this-week-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--week-border);
+}
+
+.this-week-day-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--week-text);
+  font-weight: 600;
+}
+
+.this-week-date {
+  font-size: 0.9rem;
+  color: var(--week-text-secondary);
+  background: var(--week-count-bg);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Task List Styles */
+.this-week-task-list {
+  min-height: 100px;
+}
+
+.this-week-task-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--week-border);
+  transition: all 0.2s ease;
+}
+
+.this-week-task-item:hover {
+  background-color: var(--week-hover);
+  border-radius: 4px;
+  padding: 10px 8px;
+  margin: 0 -8px;
+}
+
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.task-title {
+  color: var(--week-text);
+  font-size: 0.95rem;
+}
+
+.task-date {
+  font-size: 0.75rem;
+  color: var(--week-text-muted);
+  margin-top: 2px;
+}
+
+.this-week-task-checkbox {
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--week-checkbox);
+}
+
+.this-week-task-completed {
+  text-decoration: line-through;
+  color: var(--week-completed);
+}
+
+/* Add Task Button */
 .this-week-add-btn {
   display: flex;
   align-items: center;
@@ -115,9 +200,9 @@
   width: 100%;
   padding: 10px 15px;
   margin: 10px 0 20px;
-  background-color: #f8f8f8;
-  color: #555;
-  border: 1px dashed #ccc;
+  background-color: var(--week-add-btn-bg);
+  color: var(--week-add-btn-text);
+  border: 1px dashed var(--week-add-btn-border);
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
@@ -126,9 +211,9 @@
 }
 
 .this-week-add-btn:hover {
-  background-color: #f0f0f0;
-  border-color: #999;
-  color: #333;
+  background-color: var(--week-add-btn-hover);
+  border-color: var(--week-text-secondary);
+  color: var(--week-text);
 }
 
 .this-week-add-btn:active {
@@ -137,76 +222,106 @@
 
 /* Form Styles */
 .this-week-form {
-    margin: 15px 0;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin: 15px 0;
+  padding: 15px;
+  background-color: var(--week-card-bg);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px var(--week-card-shadow);
+  border: 1px solid var(--week-card-border);
+}
+
+.this-week-input {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--week-input-border);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background-color: var(--week-input-bg);
+  color: var(--week-text);
+}
+
+.this-week-input::placeholder {
+  color: var(--week-text-muted);
+}
+
+.this-week-input:focus {
+  outline: none;
+  border-color: var(--week-input-focus);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.this-week-input[type="date"] {
+  padding: 9px 12px;
+  color: var(--week-text);
+  cursor: pointer;
+}
+
+.this-week-input[type="date"]:hover {
+  border-color: var(--week-text-secondary);
+}
+
+.this-week-form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.this-week-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.this-week-save-btn {
+  background-color: var(--week-btn-bg);
+  color: var(--week-btn-text);
+}
+
+.this-week-cancel-btn {
+  background: var(--week-btn-cancel-bg);
+  color: var(--week-btn-cancel-text);
+  border: 1px solid var(--week-border);
+}
+
+.this-week-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.this-week-cancel-btn:hover {
+  background: var(--week-btn-cancel-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .this-week-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .this-week-grid {
+    grid-template-columns: 1fr;
   }
   
-  .this-week-input {
-    width: 100%;
-    margin-bottom: 8px;
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    background-color: #fff;
+  .this-week-container {
+    padding: 15px;
   }
-  
-  .this-week-input[type="date"] {
-    padding: 9px 12px;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  .this-week-input[type="date"]:hover {
-    border-color: #999;
-  }
-  
-  .this-week-input[type="date"]:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-  }
-  
-  .this-week-form-actions {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-    margin-top: 10px;
-  }
-  
-  .this-week-btn {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .this-week-save-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-  }
-  
-  .this-week-cancel-btn {
-    background: transparent;
-    color: #666;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    .this-week-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .this-week-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+}
+
+/* Animation for task items */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.this-week-task-item {
+  animation: fadeIn 0.3s ease-out;
+}

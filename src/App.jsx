@@ -1,5 +1,6 @@
 // App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 // Components & Pages
 import WelcomeScreen from "./components/WelcomeScreen";
@@ -16,6 +17,7 @@ import CalendarView from "./pages/CalendarView"
 
 function App() {
   return (
+    <DarkModeProvider>
     <Router>
       <Routes>
         {/* Default route → Welcome page */}
@@ -38,6 +40,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </DarkModeProvider>
   );
 }
 

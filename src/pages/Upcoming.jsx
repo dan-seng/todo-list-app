@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaPlus, FaSun, FaMoon } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 import "./Upcoming.css";
 
@@ -12,23 +12,6 @@ export default function Upcoming() {
   const [tasks, setTasks] = useState([]);
   const [activeForm, setActiveForm] = useState(null);
   const [newTask, setNewTask] = useState({ title: "", date: "" });
-  const [darkMode, setDarkMode] = useState(false);
-  
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    document.documentElement.classList.toggle('dark', newDarkMode);
-    localStorage.setItem('darkMode', newDarkMode);
-  };
-  
-  // Check for saved dark mode preference
-  useEffect(() => {
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(savedDarkMode);
-    if (savedDarkMode) {
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
   
   useEffect(() => {
     setTasks(loadTasks());
@@ -164,13 +147,6 @@ export default function Upcoming() {
           <h1>Upcoming Tasks</h1>
           <span className="task-count">{totalTasks} {totalTasks === 1 ? 'task' : 'tasks'}</span>
         </div>
-        <button 
-          onClick={toggleDarkMode} 
-          className="theme-toggle"
-          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {darkMode ? <FaSun /> : <FaMoon />}
-        </button>
       </div>
       <div className="tasks-time">
         <div className="today">
@@ -365,13 +341,14 @@ export default function Upcoming() {
         <div className="others">
             <div className="section-header">
               <h2>Others</h2>
+              </div>
               <button 
                 className="add-to-section"
                 onClick={() => toggleTaskForm('others')}
               >
                 <FaPlus size={15} /> Add New Task
               </button>
-            </div>
+            
             
             {activeForm === 'others' && (
               <form onSubmit={(e) => {

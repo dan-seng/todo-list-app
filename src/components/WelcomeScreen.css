@@ -1,8 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
+:root {
+  --primary-bg: #ffffff;
+  --primary-text: #000000;
+  --secondary-text: #555555;
+  --accent-color: rgb(254, 239, 72);
+  --accent-hover: rgb(252, 233, 36);
+  --text-hover: #222222;
+  --border-radius: 10px;
+}
+
+.dark {
+  --primary-bg: #1a202c;
+  --primary-text: #e2e8f0;
+  --secondary-text: #a0aec0;
+  --text-hover: #ffffff;
+  --accent-color: rgb(236, 201, 75);
+  --accent-hover: rgb(252, 233, 36);
+}
+
 body,
 .welcome-screen {
   font-family: 'Poppins', sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
 .welcome-screen {
@@ -11,7 +35,9 @@ body,
   align-items: center;
   padding: 40px;
   width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
+  background-color: var(--primary-bg);
 }
 
 .logo-section {
@@ -23,8 +49,9 @@ body,
 
 .logo-image {
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   max-width: 470px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .intro-section {
@@ -33,12 +60,13 @@ body,
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: var(--primary-text);
 }
 
 .get-started-btn {
   text-decoration: none;
-  background-color: rgb(254, 239, 72);
-  color: black;
+  background-color: var(--accent-color);
+  color: var(--primary-text);
   padding: 5px;
   margin: 10px;
   font-size: 20px;
@@ -48,15 +76,18 @@ body,
   height: 40px;
   border-radius: 12px;
   transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
 }
-.get-started-btn:hover{
+
+.get-started-btn:hover {
   transform: scale(0.95);
-
+  background-color: var(--accent-hover);
 }
-
 
 .signin-link {
-  color: #555;
+  color: var(--secondary-text);
   text-decoration: underline;
   font-size: 16px;
   margin-top: 8px;
@@ -66,6 +97,28 @@ body,
 }
 
 .signin-link:hover {
-  color: #222;
+  color: var(--text-hover);
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .welcome-screen {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .logo-section,
+  .intro-section {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .logo-section {
+    margin-bottom: 30px;
+  }
+
+  .logo-image {
+    max-width: 300px;
+  }
 }
