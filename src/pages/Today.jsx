@@ -1,29 +1,31 @@
 import "./Upcoming.css"
 import { useState, useEffect } from "react";
-import tasksData from "../data/Tasks";
 import { FaPlus } from "react-icons/fa";
+
 
 const loadTasks = () => {
   const savedTasks = localStorage.getItem('tasks');
-  return savedTasks ? JSON.parse(savedTasks) : tasksData;
+  return savedTasks ? JSON.parse(savedTasks) : [];
 };
 
 export default function Today() {
-  const [tasks, setTasks] = useState(loadTasks());
+  const [tasks, setTasks] = useState([]);
   const [activeForm, setActiveForm] = useState(false);
   const [newTask, setNewTask] = useState({ title: "", date: "" });
-  
-  const today = new Date();
-  const todayStr = today.toISOString().split("T")[0]; // YYYY-MM-DD
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+    setTasks(loadTasks());
+  }, []);
+  
+  const today = new Date();
+  const todayStr = today.toISOString().split("T")[0]; 
 
   const toggleTaskCompletion = (taskId) => {
-    setTasks(tasks.map(task => 
+    const updatedTasks = tasks.map(task => 
       task.id === taskId ? { ...task, completed: !task.completed } : task
-    ));
+    );
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
   const handleInputChange = (e) => {
@@ -50,8 +52,6 @@ export default function Today() {
   const toggleTaskForm = () => {
     setActiveForm(!activeForm);
   };
-
-  // Filter tasks for today
   const todayTasks = tasks.filter(task => task.date === todayStr);
   const totalTasks = todayTasks.length;
    
