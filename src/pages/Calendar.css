@@ -1,0 +1,180 @@
+:root {
+    --primary-color: #3b82f6; /* blue-500 */
+    --primary-hover: #2563eb; /* blue-600 */
+    --text-color: #1f2937; /* gray-800 */
+    --border-color: #e5e7eb; /* gray-200 */
+    --card-bg: #ffffff;
+  }
+  
+  [data-theme='dark'] {
+    --text-color: #f9fafb; /* gray-50 */
+    --border-color: #374151; /* gray-700 */
+    --card-bg: #1f2937; /* gray-800 */
+  }
+
+.calendar-view {
+    padding: 2rem;
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 1800px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  
+  .calendar-header h2 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .nav-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+  }
+  
+  .nav-button:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .calendars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    padding-bottom: 2rem;
+  }
+  
+  .calendar-month {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 0.75rem;
+    min-height: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .calendar-month:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+  
+  .calendar-month h3 {
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+    padding-bottom: 0.25rem;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  
+  /* FullCalendar overrides */
+  .fc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .fc-view-harness {
+    flex: 1;
+    min-height: 0;
+  }
+  
+  .fc .fc-daygrid-day {
+    padding: 0.5px;
+  }
+  
+  .fc .fc-daygrid-day-number {
+    padding: 0 1px;
+    color: var(--text-color);
+    font-size: 0.55rem;
+    line-height: 1.2;
+  }
+  
+  .fc .fc-daygrid-day-top {
+    justify-content: center;
+  }
+  
+  .fc .fc-col-header-cell-cushion {
+    padding: 2px 4px;
+    font-size: 0.7rem;
+  }
+  
+  .fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(66, 165, 245, 0.1);
+  }
+  
+  .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .fc .fc-daygrid-event {
+    font-size: 0.6rem;
+    padding: 0 2px;
+    margin: 0 1px 1px;
+    border-radius: 2px;
+    background-color: var(--primary-color);
+    border: none;
+    line-height: 1.2;
+  }
+  
+  .fc .fc-daygrid-event:hover {
+    opacity: 0.9;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .calendars-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding: 0 1rem 2rem;
+    }
+    
+    .calendar-month {
+      height: 260px;
+      margin: 0;
+    }
+  }
+  
+  /* Dark mode support */
+  [data-theme='dark'] .calendar-month {
+    background: var(--card-bg);
+  }
+  
+  [data-theme='dark'] .fc-theme-standard th,
+  [data-theme='dark'] .fc-theme-standard td,
+  [data-theme='dark'] .fc-theme-standard thead,
+  [data-theme='dark'] .fc-theme-standard tbody,
+  [data-theme='dark'] .fc-theme-standard .fc-scrollgrid {
+    border-color: var(--border-color);
+  }
+  
+  [data-theme='dark'] .fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(66, 165, 245, 0.2);
+  }
+  
+  [data-theme='dark'] .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+    color: var(--primary-color);
+  }
