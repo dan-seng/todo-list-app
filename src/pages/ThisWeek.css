@@ -167,7 +167,8 @@
   gap: 2px;
 }
 
-.task-title {
+.task-content,
+.this-week-no-tasks {
   color: var(--week-text);
   font-size: 0.95rem;
 }
