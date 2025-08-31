@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaBars, FaSignOutAlt, FaCog, FaRegCalendarAlt, FaRegStickyNote, FaSun, FaMoon, FaCalendarWeek } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
-
-
-
 import "./Sidebar.css";
 
 export default function Sidebar() {
@@ -65,14 +62,6 @@ export default function Sidebar() {
               <FaBars />
             </button>
           )}
-        </div>
-        
-        <div className="sidebar-search">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="search-input"
-          />
         </div>
         
         <nav onClick={handleNavClick}>
