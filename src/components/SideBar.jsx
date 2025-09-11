@@ -87,7 +87,7 @@ export default function Sidebar() {
             </li>
             <li><NavLink to="settings" className={({ isActive }) => isActive ? 'active' : ''}><FaCog size={17} />Settings</NavLink></li>
           </ul>
-          <Link to="/signin" className="sign-out"><FaSignOutAlt size={17} />Sign out</Link>
+          <Link to="/" className="sign-out"><FaSignOutAlt size={17} />Sign out</Link>
         </nav>
       </div>
     </>
