@@ -14,6 +14,7 @@ import Upcoming from "./pages/Upcoming";
 import StickyWall from "./pages/StickyWall";
 import Settings from "./pages/Settings";
 import CalendarView from "./pages/CalendarView"
+import About from "./pages/About"
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="calendarview" element={<CalendarView/>} />
           <Route path="sticky" element={<StickyWall />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="about" element={<About />} />
         </Route>
       </Routes>
     </Router>
