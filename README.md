@@ -1,36 +1,29 @@
 # 📝 Todo List Application
 
-A feature-rich, production-ready Todo List application designed to help you stay organized and boost your productivity. Built with modern web technologies, this application offers a seamless user experience across all devices with its responsive design and intuitive interface.
+A modern, frontend-only Todo List application designed to help you stay organized and boost your productivity. Built with React and modern web technologies, this application offers a seamless user experience with its responsive design and intuitive interface. All data is stored locally in your browser's localStorage.
 
 ## 🎯 Features
 
-### 🔐 User Authentication
-- Secure signup and login system
-- Protected routes for authenticated users
-- Persistent login sessions
-
 ### 📋 Task Management
-- **Create** new tasks with titles and descriptions
-- **Read** all your tasks in a clean, organized view
-- **Update** task details or mark as complete/incomplete
+- **Create** new tasks with titles and due dates
+- **Mark tasks as complete/incomplete** with a single click
+- **Edit** task details directly
 - **Delete** tasks you no longer need
-- Set due dates and priorities for better organization
+- Tasks are automatically saved to your browser's localStorage
 
-### 🔍 Smart Organization
-- Filter tasks by status (All/Active/Completed)
-- Search functionality to quickly find specific tasks
-- Sort tasks by due date, priority, or creation time
+### 🗓️ Multiple Views
+- **Today** - See tasks due today
+- **This Week** - View your weekly tasks
+- **This Month** - Monthly task overview
+- **Upcoming** - All your upcoming tasks in one place
+- **Calendar View** - Visualize your tasks on a calendar
+- **Sticky Wall** - A freeform space for quick notes and ideas
 
 ### 🎨 User Experience
 - **Dark/Light theme** - Switch between themes based on your preference
-- **Responsive design** - Works seamlessly on desktop, tablet, and mobile devices
+- **Responsive design** - Works on desktop and mobile devices
 - **Intuitive UI** - Clean and modern interface for maximum usability
-- **Keyboard shortcuts** - Navigate and manage tasks efficiently
-
-### 📅 Calendar Integration
-- View tasks in a monthly calendar layout
-- Drag and drop to reschedule tasks
-- Daily, weekly, and monthly task overviews
+- **Quick add** - Add tasks quickly with the floating action button
 
 ## 🚀 Getting Started
 
@@ -62,27 +55,17 @@ A feature-rich, production-ready Todo List application designed to help you stay
    ```
 
 4. **Open the application**
-   - Development: [http://localhost:5173](http://localhost:5173)
+   The application will be available at [http://localhost:5173](http://localhost:5173)
    - The application will automatically reload if you make changes to the source files
-
-## 🔑 Test Credentials
-
-For quick access, you can use the following test account:
-
-```
-Email: example@gmail.com
-Password: 12345678
-```
-
 ## 🛠️ Built With
 
-- **Frontend Framework**: [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-- **Build Tool**: [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) - Popular icons for React applications
-- **State Management**: React Context API - For global state management
-- **Form Handling**: React Hook Form - For efficient form validation
-- **Date Handling**: date-fns - Modern JavaScript date utility library
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [React Icons](https://react-icons.github.io/react-icons/) - Popular icons for React applications
+- [React Router](https://reactrouter.com/) - For client-side routing
+- [GSAP](https://greensock.com/gsap/) - For smooth animations
+- [React Calendar](https://github.com/wojtekmaj/react-calendar) - For the calendar view
 
 ## 📂 Project Structure
 
@@ -93,7 +76,6 @@ todo-app/
 │   ├── assets/        # Images and other assets
 │   ├── components/    # Reusable UI components
 │   ├── context/       # React context providers
-│   ├── data/          # Mock data and configurations
 │   ├── pages/         # Page components
 │   ├── App.jsx        # Main application component
 │   └── main.jsx       # Application entry point
@@ -105,27 +87,22 @@ todo-app/
 
 ## 🤝 Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+1. Fork the repository
+2. Create a new branch for your feature (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## 📝 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ✉️ Contact
+## 🔧 Future Improvements
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - your.email@example.com
-
-Project Link: [https://github.com/yourusername/todo-app](https://github.com/yourusername/todo-app)
-
-## 🙏 Acknowledgments
-
-- [Choose an Open Source License](https://choosealicense.com)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
+- Add task categories and tags
+- Implement task priorities
+- Add search functionality
+- Enable task sharing via link
+- Add task export/import functionality
