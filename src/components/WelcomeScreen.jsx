@@ -10,7 +10,7 @@ export default function WelcomeScreen() {
         <img src={logo} alt="Dan-Softwares logo" className="logo-image" />
       </div>
       <div className="intro-section">
-      <h1>Welcome to Dan to-do</h1>
+      <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Welcome to Dan to-do</h1>
            <p>
            Organize your tasks, boost your productivity, and stay on top of your goals with Dan to-do. Easily add, manage, and track your daily activities—all in one simple, intuitive app. 
            Let’s get started and make every day more productive!
