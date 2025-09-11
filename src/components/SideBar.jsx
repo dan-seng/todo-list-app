@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { FaBars, FaSignOutAlt, FaCog, FaRegCalendarAlt, FaRegStickyNote, FaSun, FaMoon, FaCalendarWeek } from "react-icons/fa";
+import { FaBars, FaSignOutAlt, FaCog, FaRegCalendarAlt, FaRegStickyNote, FaSun, FaMoon, FaCalendarWeek, FaInfoCircle } from "react-icons/fa";
 import { useDarkMode } from "../context/DarkModeContext";
 import "./Sidebar.css";
 
@@ -86,7 +86,7 @@ export default function Sidebar() {
               </button>
             </li>
             <li><NavLink to="settings" className={({ isActive }) => isActive ? 'active' : ''}><FaCog size={17} />Settings</NavLink></li>
-            <li><NavLink to="about" className={({ isActive }) => isActive ? 'active' : ''}><FaCog size={17} />About</NavLink></li>
+            <li><NavLink to="about" className={({ isActive }) => isActive ? 'active' : ''}><FaInfoCircle size={17} />About</NavLink></li>
           </ul>
           <Link to="/" className="sign-out"><FaSignOutAlt size={17} />Sign out</Link>
         </nav>
