@@ -42,7 +42,7 @@ const Future = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Coming Soon</h1>
@@ -55,7 +55,7 @@ const Future = () => {
           {upcomingFeatures.map((feature, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              className="border border-gray-500 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               <div className="p-6">
                 <div className="flex flex-col items-center text-center">
